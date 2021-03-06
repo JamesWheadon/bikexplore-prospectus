@@ -1,16 +1,72 @@
 function addOverviewImage() {
     let numOverviewImages = document.getElementsByClassName('overviewImages').length;
-    let imageInputLabel = `<label for="overviewImage${numOverviewImages + 1}">URL for image for overview tab:</label>`;
-    let imageInput = `<input name="overviewImage${numOverviewImages + 1}" ;id="overviewImage${numOverviewImages + 1}" class="OverviewImages" placeholder="URL of an image for the overview tab"/>`;
-    document.getElementById('overviewImagesDiv').innerHTML += imageInputLabel;
-    document.getElementById('overviewImagesDiv').innerHTML += imageInput;
-    document.getElementById('overviewImagesDiv').innerHTML += "<br>";
+    
+    let imageInputLabel = document.createElement('label');
+    imageInputLabel.setAttribute('for', `overviewImage${numOverviewImages + 1}`);
+    imageInputLabel.textContent = `URL for image for overview tab`;
+
+    let imageInput = document.createElement('input');
+    imageInput.setAttribute('name', `overviewImage${numOverviewImages + 1}`)
+    imageInput.setAttribute('id', `overviewImage${numOverviewImages + 1}`)
+    imageInput.setAttribute('class', `OverviewImages`)
+    imageInput.setAttribute('placeholder', `URL of an image for the overview tab`)
+
+    document.getElementById('overviewImagesDiv').appendChild(imageInputLabel);
+    document.getElementById('overviewImagesDiv').appendChild(imageInput);
+    document.getElementById('overviewImagesDiv').appendChild(document.createElement('br'));
 }
 
 function addItineraryDay() {
     let numItineraryDays = document.getElementsByClassName('itineraryDays').length;
 
-    let dayTitleLabel = `<label for="itineraryDay${numItineraryDays + 1}>Day Title</label>`;
+    let dayContainer = document.createElement('div');
+
+    document.getElementById('itineraryDaysDiv').appendChild(dayContainer);
+
+    const dayFieldContent = [['itineraryDay', 'Day title:', 'Title for this day'], 
+    ['dayHighlight', 'Day highlight:', 'Highlights for this day'], 
+    ['daySummary', 'Day summary:', 'Summary for this day'], 'checkbox', 
+    ['dayAccom', 'Accommodation:', 'Accomodation for this day'], 
+    ['dayMeals', 'Meals provided:', 'Meals provided for this day'], 
+    ['dayDistance', 'Cycling distance:', 'How long is this day\'s route'], 
+    ['dayClimb', 'Altitude gain:', 'What is the altitude gain for this day\'s route'], 
+    ['dayImage', 'Image for this day:', 'URL for the Image for this day'], 
+    ['dayMap', 'Map for this day:', 'URL for the Map for today'], 
+    ['dayProfile', 'Profile for this day:', '"URL for the Elevation Profile for today']]
+
+    for (const day of dayFieldContent) {
+        if (day === 'checkbox') {
+            let inputLabel = document.createElement('label');
+            inputLabel.setAttribute('for', `dayCycling${numItineraryDays + 1}`);
+            inputLabel.textContent = 'Check if there is a route for this day';
+
+            let input = document.createElement('input');
+            input.setAttribute('type', `checkbox`)
+            input.setAttribute('name', `dayCycling${numItineraryDays + 1}`)
+            input.setAttribute('id', `dayCycling${numItineraryDays + 1}`)
+            input.setAttribute('placeholder', day[2])
+
+            dayContainer.appendChild(inputLabel);
+            dayContainer.appendChild(input);
+            dayContainer.appendChild(document.createElement('br'));
+        }
+        else {
+            let inputLabel = document.createElement('label');
+            inputLabel.setAttribute('for', `${day[0]}${numItineraryDays + 1}`);
+            inputLabel.textContent = day[1];
+
+            let input = document.createElement('input');
+            input.setAttribute('name', `${day[0]}${numItineraryDays + 1}`)
+            input.setAttribute('id', `${day[0]}${numItineraryDays + 1}`)
+            input.setAttribute('placeholder', day[2])
+
+            dayContainer.appendChild(inputLabel);
+            dayContainer.appendChild(input);
+            dayContainer.appendChild(document.createElement('br'));
+        }
+    }
+
+    /* let dayTitleLabel = `<label for="itineraryDay${numItineraryDays + 1}>Day Title</label>`;
     let dayTitleInput = `<input name="itineraruDay${numItineraryDays + 1}" ;id="itineraruDay${numItineraryDays + 1}" placeholder="Title for this day of the holiday"/>`;
 
     let dayHighlightsLabel = `<label for="dayHighlight${numItineraryDays + 1}>Day higlights</label>`;
@@ -44,6 +100,9 @@ function addItineraryDay() {
     let dayProfileInput = `<input name="dayProfile${numItineraryDays + 1}" ;id="dayProfile${numItineraryDays + 1}" placeholder="URL for the Elevation Profile for today"/>`;
 
     let dayContainer = document.createElement('div');
+
+    document.getElementById('itineraryDaysDiv').appendChild(dayContainer);
+    
     dayContainer.className = "itineraryDays";
     dayContainer.innerHTML += dayTitleLabel;
     dayContainer.innerHTML += dayTitleInput;
@@ -66,7 +125,5 @@ function addItineraryDay() {
     dayContainer.innerHTML += dayMapLabel;
     dayContainer.innerHTML += dayMapInput;
     dayContainer.innerHTML += dayProfileLabel;
-    dayContainer.innerHTML += dayProfileInput;
-
-    document.getElementById('itineraryDaysDiv').innerHTML += dayContainer;
+    dayContainer.innerHTML += dayProfileInput; */
 }
