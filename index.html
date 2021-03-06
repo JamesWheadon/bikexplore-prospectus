@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bikexplore Prospectus</title>
+    <script src='script.js'></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bikexplore Prospectus Generator</h1>
+    </header>
+    <main>
+    <form id="my-form">
+        <label for="leaderName">Tour Leader name</label>
+        <input type="text" id="leaderName" name="leaderName" placeholder="Tour leader name"/>
+        <label for="holidayTitle">Title of the holiday</label>
+        <input name="holidayTitle" id="holidayTitle" placeholder="Title of the holiday"/>
+        <label for="holidayDates">Dates of the holiday</label>
+        <input name="holidayDates" id="holidayDates" placeholder="Dates of the holiday"/>
+        <br>
+        <textarea id="holidaySummary" name="holidaySummary" rows="4" cols="50" name="holidaySummary" placeholder="Give a summary of the holiday"></textarea>
+        <label for="rating">What level of difficulty is the cycling in this holiday?</label>
+        <select name="rating" id="rating" name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+        <button type="button" onclick="addOverviewImage()">Add an image to the Overview tab</button>
+        <div id="overviewImagesDiv"></div>
+        <!--<input type="submit" id="submit" value="Send!">--->
+    </form>
+    <div id="card"></div>
+    </main>
+</body>
+</html>
