@@ -13,37 +13,43 @@
     </header>
     <main>
     <form id="my-form">
-        <label for="leaderName">Tour Leader name</label>
-        <input type="text" id="leaderName" name="leaderName" placeholder="Tour leader name"/>
-        <label for="holidayTitle">Title of the holiday</label>
-        <input name="holidayTitle" id="holidayTitle" placeholder="Title of the holiday"/>
-        <label for="holidayDates">Dates of the holiday</label>
-        <input name="holidayDates" id="holidayDates" placeholder="Dates of the holiday"/>
-        <br>
-        <textarea id="holidaySummary" name="holidaySummary" rows="4" cols="50" name="holidaySummary" placeholder="Give a summary of the holiday"></textarea>
-        <label for="rating">What level of difficulty is the cycling in this holiday?</label>
-        <select name="rating" id="rating" name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-        </select>
-        <label for="holidayProspectus">Holiday prospectus</label>
-        <input name="holidayProspectus" id="holidayProspectus" placeholder="URL for the holiday prospectus"/>
-        <label for="bookingForm">Booking form</label>
-        <input name="bookingForm" id="bookingForm" placeholder="URL for the booking form"/>
-        <label for="bookingConditions">Booking conditions</label>
-        <input name="bookingConditions" id="bookingConditions" placeholder="URL for the booking conditions"/>
-        <button type="button" onclick="addOverviewImage()">Add an image to the Overview tab</button>
-        <div id="overviewImagesDiv"></div>
+        <section id="overviewTab">
+            <label for="leaderName">Tour Leader name</label>
+            <input type="text" id="leaderName" name="leaderName" placeholder="Tour leader name"/>
+            <label for="holidayTitle">Title of the holiday</label>
+            <input name="holidayTitle" id="holidayTitle" placeholder="Title of the holiday"/>
+            <label for="holidayDates">Dates of the holiday</label>
+            <input name="holidayDates" id="holidayDates" placeholder="Dates of the holiday"/>
+            <br>
+            <textarea id="holidaySummary" name="holidaySummary" rows="4" cols="50" name="holidaySummary" placeholder="Give a summary of the holiday"></textarea>
+            <label for="rating">What level of difficulty is the cycling in this holiday?</label>
+            <select name="rating" id="rating" name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+            <label for="holidayProspectus">Holiday prospectus</label>
+            <input name="holidayProspectus" id="holidayProspectus" placeholder="URL for the holiday prospectus"/>
+            <label for="bookingForm">Booking form</label>
+            <input name="bookingForm" id="bookingForm" placeholder="URL for the booking form"/>
+            <label for="bookingConditions">Booking conditions</label>
+            <input name="bookingConditions" id="bookingConditions" placeholder="URL for the booking conditions"/>
+            <button type="button" onclick="addOverviewImage()">Add an image to the Overview tab</button>
+            <div id="overviewImagesDiv"></div>
+        </section>
+        <section id="itineraryTab">
+            <div id="itineraryDaysDiv"></div>
+            <button type="button" onclick="addItineraryDay()">Add another day to the itinerary tab</button>
+        </section>
+
         <!--<input type="submit" id="submit" value="Send!">--->
     </form>
-    <div id="card"></div>
     </main>
 </body>
 </html>
