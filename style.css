@@ -15,11 +15,13 @@ body {
 h1 {
     text-align: center;
     grid-column: 1 / span 2;
+    margin: 10px;
 }
 
 h3 {
     text-align: center;
     grid-column: 1 / span 2;
+    margin: 10px;
 }
 
 button {
