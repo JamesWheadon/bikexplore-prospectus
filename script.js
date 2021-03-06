@@ -14,42 +14,54 @@ function addOverviewImage() {
 
     document.getElementById('overviewImagesDiv').appendChild(imageInputLabel);
     document.getElementById('overviewImagesDiv').appendChild(imageInput);
-    document.getElementById('overviewImagesDiv').appendChild(document.createElement('br'));
 }
 
 function addItineraryDay() {
     let numItineraryDays = document.getElementsByClassName('itineraryDays').length;
 
     let dayContainer = document.createElement('div');
+    dayContainer.setAttribute('class', 'itineraryDays')
 
     document.getElementById('itineraryDaysDiv').appendChild(dayContainer);
 
+    let dayNumber = document.createElement('h2')
+    dayNumber.textContent = `Day ${numItineraryDays + 1}`
+    dayContainer.appendChild(dayNumber)
+
     const dayFieldContent = [['itineraryDay', 'Day title:', 'Title for this day'], 
     ['dayHighlight', 'Day highlight:', 'Highlights for this day'], 
-    ['daySummary', 'Day summary:', 'Summary for this day'], 'checkbox', 
+    ['daySummary', 'Day summary:', 'Summary for this day'], 
+    ['checkbox', 'dayCycling', 'Is there is a route for this day?'], 
     ['dayAccom', 'Accommodation:', 'Accomodation for this day'], 
     ['dayMeals', 'Meals provided:', 'Meals provided for this day'], 
     ['dayDistance', 'Cycling distance:', 'How long is this day\'s route'], 
     ['dayClimb', 'Altitude gain:', 'What is the altitude gain for this day\'s route'], 
-    ['dayImage', 'Image for this day:', 'URL for the Image for this day'], 
-    ['dayMap', 'Map for this day:', 'URL for the Map for today'], 
-    ['dayProfile', 'Profile for this day:', '"URL for the Elevation Profile for today']];
+    ['checkbox', 'dayImage', 'is there an Image for this day?'], 
+    ['checkbox', 'dayMap', 'is there a Map for this day?'], 
+    ['checkbox', 'dayProfile', 'is there a Profile for this day?']];
 
     for (const day of dayFieldContent) {
-        if (day === 'checkbox') {
+        if (day[0] === 'checkbox') {
             let inputLabel = document.createElement('label');
-            inputLabel.setAttribute('for', `dayCycling${numItineraryDays + 1}`);
-            inputLabel.textContent = 'Check if there is a route for this day';
+            inputLabel.setAttribute('for', `${day[1]}${numItineraryDays + 1}`);
+            inputLabel.textContent = `${day[2]}`;
 
             let input = document.createElement('input');
             input.setAttribute('type', `checkbox`)
-            input.setAttribute('name', `dayCycling${numItineraryDays + 1}`)
-            input.setAttribute('id', `dayCycling${numItineraryDays + 1}`)
+            input.setAttribute('name', `${day[1]}${numItineraryDays + 1}`)
+            input.setAttribute('id', `${day[1]}${numItineraryDays + 1}`)
             input.setAttribute('placeholder', day[2])
 
             dayContainer.appendChild(inputLabel);
             dayContainer.appendChild(input);
-            dayContainer.appendChild(document.createElement('br'));
+        }
+        else if (day[0] === 'daySummary') {
+            let input = document.createElement('textarea');
+            input.setAttribute('name', `${day[0]}${numItineraryDays + 1}`);
+            input.setAttribute('id', `${day[0]}${numItineraryDays + 1}`);
+            input.setAttribute('placeholder', day[2]);
+
+            dayContainer.appendChild(input);
         }
         else {
             let inputLabel = document.createElement('label');
@@ -64,9 +76,9 @@ function addItineraryDay() {
 
             dayContainer.appendChild(inputLabel);
             dayContainer.appendChild(input);
-            dayContainer.appendChild(document.createElement('br'));
         }
     }
+    dayContainer.appendChild(document.createElement('hr'));
 }
 
 function addPriceInc() {
@@ -85,7 +97,6 @@ function addPriceInc() {
 
     document.getElementById('priceIncDiv').appendChild(priceIncLabel);
     document.getElementById('priceIncDiv').appendChild(priceInc);
-    document.getElementById('priceIncDiv').appendChild(document.createElement('br'));
 }
 
 function addPriceNotInc() {
@@ -104,7 +115,6 @@ function addPriceNotInc() {
 
     document.getElementById('priceNotIncDiv').appendChild(priceNotIncLabel);
     document.getElementById('priceNotIncDiv').appendChild(priceNotInc);
-    document.getElementById('priceNotIncDiv').appendChild(document.createElement('br'));;
 }
 
 function addTableRow() {
