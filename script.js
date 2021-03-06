@@ -33,7 +33,7 @@ function addItineraryDay() {
     ['dayClimb', 'Altitude gain:', 'What is the altitude gain for this day\'s route'], 
     ['dayImage', 'Image for this day:', 'URL for the Image for this day'], 
     ['dayMap', 'Map for this day:', 'URL for the Map for today'], 
-    ['dayProfile', 'Profile for this day:', '"URL for the Elevation Profile for today']]
+    ['dayProfile', 'Profile for this day:', '"URL for the Elevation Profile for today']];
 
     for (const day of dayFieldContent) {
         if (day === 'checkbox') {
@@ -57,10 +57,10 @@ function addItineraryDay() {
             inputLabel.textContent = day[1];
 
             let input = document.createElement('input');
-            input.setAttribute('name', `${day[0]}${numItineraryDays + 1}`)
-            input.setAttribute('id', `${day[0]}${numItineraryDays + 1}`)
-            input.setAttribute('type', `text`)
-            input.setAttribute('placeholder', day[2])
+            input.setAttribute('name', `${day[0]}${numItineraryDays + 1}`);
+            input.setAttribute('id', `${day[0]}${numItineraryDays + 1}`);
+            input.setAttribute('type', `text`);
+            input.setAttribute('placeholder', day[2]);
 
             dayContainer.appendChild(inputLabel);
             dayContainer.appendChild(input);
@@ -77,11 +77,11 @@ function addPriceInc() {
     priceIncLabel.textContent = `Price includes:`;
 
     let priceInc = document.createElement('input');
-    priceInc.setAttribute('name', `priceInc${numpriceInc + 1}`)
-    priceInc.setAttribute('id', `priceInc${numpriceInc + 1}`)
-    priceInc.setAttribute('class', `priceIncludes`)
-    priceInc.setAttribute('type', `text`)
-    priceInc.setAttribute('placeholder', `What does price include`)
+    priceInc.setAttribute('name', `priceInc${numpriceInc + 1}`);
+    priceInc.setAttribute('id', `priceInc${numpriceInc + 1}`);
+    priceInc.setAttribute('class', `priceIncludes`);
+    priceInc.setAttribute('type', `text`);
+    priceInc.setAttribute('placeholder', `What does price include`);
 
     document.getElementById('priceIncDiv').appendChild(priceIncLabel);
     document.getElementById('priceIncDiv').appendChild(priceInc);
@@ -91,18 +91,76 @@ function addPriceInc() {
 function addPriceNotInc() {
     let numpriceNotInc = document.getElementsByClassName('priceNotIncludes').length;
     
-    let priceNotInceLabel = document.createElement('label');
-    priceNotInceLabel.setAttribute('for', `priceNotInc${numpriceNotInc + 1}`);
-    priceNotInceLabel.textContent = `Price includes:`;
+    let priceNotIncLabel = document.createElement('label');
+    priceNotIncLabel.setAttribute('for', `priceNotInc${numpriceNotInc + 1}`);
+    priceNotIncLabel.textContent = `Price includes:`;
 
-    let priceNotInce = document.createElement('input');
-    priceNotInce.setAttribute('name', `priceNotInc${numpriceNotInc + 1}`)
-    priceNotInce.setAttribute('id', `priceNotInc${numpriceNotInc + 1}`)
-    priceNotInce.setAttribute('class', `priceNotIncludes`)
-    priceNotInce.setAttribute('type', `text`)
-    priceNotInce.setAttribute('placeholder', `What does price include`)
+    let priceNotInc = document.createElement('input');
+    priceNotInc.setAttribute('name', `priceNotInc${numpriceNotInc + 1}`);
+    priceNotInc.setAttribute('id', `priceNotInc${numpriceNotInc + 1}`);
+    priceNotInc.setAttribute('class', `priceNotIncludes`);
+    priceNotInc.setAttribute('type', `text`);
+    priceNotInc.setAttribute('placeholder', `What does price include`);
 
-    document.getElementById('priceNotIncDiv').appendChild(priceNotInceLabel);
-    document.getElementById('priceNotIncDiv').appendChild(priceNotInce);
-    document.getElementById('priceNotIncDiv').appendChild(document.createElement('br'));
+    document.getElementById('priceNotIncDiv').appendChild(priceNotIncLabel);
+    document.getElementById('priceNotIncDiv').appendChild(priceNotInc);
+    document.getElementById('priceNotIncDiv').appendChild(document.createElement('br'));;
+}
+
+function addTableRow() {
+    let numRows = document.getElementsByClassName('CancRow').length;
+    let tableBody = document.getElementById("cancChargesBody");
+    let newRow = document.createElement('tr');
+    newRow.setAttribute('class', 'cancRow');
+    let data1 = document.createElement('td');
+    let data2 = document.createElement('td');
+
+    let dateInput = document.createElement('input');
+    dateInput.setAttribute('name', `cancDate${numRows}`);
+    dateInput.setAttribute('id', `cancDate${numRows}`);
+    dateInput.setAttribute('type', `text`);
+    dateInput.setAttribute('placeholder', `When must notice be recieved by`);
+
+    let chargeInput = document.createElement('input');
+    chargeInput.setAttribute('name', `cancCharge${numRows}`);
+    chargeInput.setAttribute('id', `cancCharge${numRows}`);
+    chargeInput.setAttribute('type', `text`);
+    chargeInput.setAttribute('placeholder', `What is the cancellation charge`);
+
+    data1.appendChild(dateInput)
+    newRow.appendChild(data1)
+
+    data2.appendChild(chargeInput)
+    newRow.appendChild(data2)
+
+    tableBody.appendChild(newRow);
+}
+
+function addTableRowHolInfo() {
+    let numRows = document.getElementsByClassName('holInfoRow').length;
+    let tableBody = document.getElementById("holInfoBody");
+    let newRow = document.createElement('tr');
+    newRow.setAttribute('class', 'holInfoRow');
+    let data1 = document.createElement('td');
+    let data2 = document.createElement('td');
+
+    let titleInput = document.createElement('input');
+    titleInput.setAttribute('name', `holInfoTitle${numRows}`);
+    titleInput.setAttribute('id', `holInfoTitle${numRows}`);
+    titleInput.setAttribute('type', `text`);
+    titleInput.setAttribute('placeholder', `Title of information panel`);
+
+    let contentInput = document.createElement('textarea');
+    contentInput.setAttribute('name', `holInforContent${numRows}`);
+    contentInput.setAttribute('id', `holInforContent${numRows}`);
+    contentInput.setAttribute('type', `text`);
+    contentInput.setAttribute('placeholder', `Content of holiday information panel`);
+
+    data1.appendChild(titleInput)
+    newRow.appendChild(data1)
+
+    data2.appendChild(contentInput)
+    newRow.appendChild(data2)
+
+    tableBody.appendChild(newRow);
 }

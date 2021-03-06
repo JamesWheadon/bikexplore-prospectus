@@ -57,13 +57,39 @@
             <div id="priceIncDiv">
                 <h3>Price includes</h3>
             </div>
-            <button type="button" onclick="addPriceInc()">Another field to price includes</button>
+            <button type="button" onclick="addPriceInc()">Add another field to price includes</button>
             <div id="priceNotIncDiv">
                 <h3>Price doesn't include</h3>
             </div>
-            <button type="button" onclick="addPriceNotInc()">Another field to price doesn't include</button>
+            <button type="button" onclick="addPriceNotInc()">Add another field to price doesn't include</button>
+            <table id="cancCharges">
+                <thead>
+                    <tr class="cancRow">
+                        <th>Written Notice Recieved</th>
+                        <th>Cancellation Charge</th>
+                    </tr>
+                </thead>
+                <tbody id="cancChargesBody">
+                </tbody>
+            </table>
+            <button type="button" onclick="addTableRow()">Add another row to table</button>
+            <label for="makeBooking">Make a booking:</label>
+            <input name="makeBooking" id="makeBooking" placeholder="How do people make a booking"/>
         </section>
-
+        <section id="holInfoTab">
+            <h3>Holiday Information</h3>
+            <table id="holInfo">
+                <thead>
+                    <tr class="holInfoRow">
+                        <th>Title of information</th>
+                        <th>More information</th>
+                    </tr>
+                </thead>
+                <tbody id="holInfoBody">
+                </tbody>
+            </table>
+            <button type="button" onclick="addTableRowHolInfo()">Add another row to table</button>
+        </section>
         <!--<input type="submit" id="submit" value="Send!">--->
     </form>
     </main>
