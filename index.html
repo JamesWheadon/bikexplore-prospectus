@@ -47,6 +47,22 @@
             <div id="itineraryDaysDiv"></div>
             <button type="button" onclick="addItineraryDay()">Add another day to the itinerary tab</button>
         </section>
+        <section id="datsPricesTab">
+            <label for="landOnly">Land only price:</label>
+            <input type="text" id="landOnly" name="landOnly" placeholder="Land only price of holiday"/>
+            <label for="flightInc">Flights included price:</label>
+            <input name="flightInc" id="flightInc" placeholder="price of the holiday, flights included"/>
+            <label for="paymentSched">Payment schedule:</label>
+            <input name="paymentSched" id="paymentSched" placeholder="Payment schedule for the holiday"/>
+            <div id="priceIncDiv">
+                <h3>Price includes</h3>
+            </div>
+            <button type="button" onclick="addPriceInc()">Another field to price includes</button>
+            <div id="priceNotIncDiv">
+                <h3>Price doesn't include</h3>
+            </div>
+            <button type="button" onclick="addPriceNotInc()">Another field to price doesn't include</button>
+        </section>
 
         <!--<input type="submit" id="submit" value="Send!">--->
     </form>
