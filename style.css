@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+.tabHeading {
+    font-size: large;
+    color: black;
+    text-decoration: underline;
+}
+
+#overviewTab {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: auto;
+    column-gap: 10px;
+}
+
+#overviewTab > label {
+    font-weight: bold;
+    grid-column: 1;
+}
+
+#overviewTab > input {
+    grid-column: 2;
+}
+
+#overviewTab > select {
+    grid-column: 2;
+}
+
+#overviewTab > textarea {
+    grid-column: 1 / span 2;
+}
+
+#overviewImagesDiv {
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: auto;
+    column-gap: 10px;
+}
+
+#overviewImagesDiv > label {
+    font-weight: bold;
+    grid-column: 1;
+}
+
+#overviewImagesDiv > input {
+    grid-column: 2;
+}

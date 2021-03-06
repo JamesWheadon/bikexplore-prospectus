@@ -14,14 +14,18 @@
     <main>
         <form id="my-form">
             <section id="overviewTab">
+                <h1 class="tabHeading">Holiday Overview Tab</h1>
                 <label for="leaderName">Tour Leader name</label>
                 <input type="text" id="leaderName" name="leaderName" placeholder="Tour leader name"/>
+                <br>
                 <label for="holidayTitle">Title of the holiday</label>
                 <input name="holidayTitle" id="holidayTitle" placeholder="Title of the holiday"/>
+                <br>
                 <label for="holidayDates">Dates of the holiday</label>
                 <input name="holidayDates" id="holidayDates" placeholder="Dates of the holiday"/>
                 <br>
                 <textarea id="holidaySummary" name="holidaySummary" rows="4" cols="50" name="holidaySummary" placeholder="Give a summary of the holiday"></textarea>
+                <br>
                 <label for="rating">What level of difficulty is the cycling in this holiday?</label>
                 <select name="rating" id="rating" name="rating">
                     <option value="1">1</option>
@@ -34,20 +38,26 @@
                     <option value="8">8</option>
                     <option value="9">9</option>
                 </select>
+                <br>
                 <label for="holidayProspectus">Holiday prospectus</label>
                 <input name="holidayProspectus" id="holidayProspectus" placeholder="URL for the holiday prospectus"/>
+                <br>
                 <label for="bookingForm">Booking form</label>
                 <input name="bookingForm" id="bookingForm" placeholder="URL for the booking form"/>
+                <br>
                 <label for="bookingConditions">Booking conditions</label>
                 <input name="bookingConditions" id="bookingConditions" placeholder="URL for the booking conditions"/>
-                <button type="button" onclick="addOverviewImage()">Add an image to the Overview tab</button>
+                <br>
                 <div id="overviewImagesDiv"></div>
+                <button type="button" onclick="addOverviewImage()">Add an image to the Overview tab</button>
             </section>
             <section id="itineraryTab">
+                <h1 class="tabHeading">Holiday Itinerary Tab</h1>
                 <div id="itineraryDaysDiv"></div>
                 <button type="button" onclick="addItineraryDay()">Add another day to the itinerary tab</button>
             </section>
             <section id="datsPricesTab">
+                <h1 class="tabHeading">Dates and Prices Tab</h1>
                 <label for="landOnly">Land only price:</label>
                 <input type="text" id="landOnly" name="landOnly" placeholder="Land only price of holiday"/>
                 <label for="flightInc">Flights included price:</label>
@@ -77,6 +87,7 @@
                 <input name="makeBooking" id="makeBooking" placeholder="How do people make a booking"/>
             </section>
             <section id="holInfoTab">
+                <h1 class="tabHeading">Holiday Information Tab</h1>
                 <h3>Holiday Information</h3>
                 <table id="holInfo">
                     <thead>
