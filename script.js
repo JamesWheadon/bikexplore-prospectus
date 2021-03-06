@@ -24,7 +24,7 @@ function addItineraryDay() {
 
     document.getElementById('itineraryDaysDiv').appendChild(dayContainer);
 
-    let dayNumber = document.createElement('h2')
+    let dayNumber = document.createElement('h3')
     dayNumber.textContent = `Day ${numItineraryDays + 1}`
     dayContainer.appendChild(dayNumber)
 
@@ -56,11 +56,16 @@ function addItineraryDay() {
             dayContainer.appendChild(input);
         }
         else if (day[0] === 'daySummary') {
+            let inputLabel = document.createElement('label');
+            inputLabel.setAttribute('for', `${day[0]}${numItineraryDays + 1}`);
+            inputLabel.textContent = `${day[1]}`;
+
             let input = document.createElement('textarea');
             input.setAttribute('name', `${day[0]}${numItineraryDays + 1}`);
             input.setAttribute('id', `${day[0]}${numItineraryDays + 1}`);
             input.setAttribute('placeholder', day[2]);
 
+            dayContainer.appendChild(inputLabel);
             dayContainer.appendChild(input);
         }
         else {
