@@ -2,17 +2,59 @@
     box-sizing: border-box;
 }
 
+:root {
+    --column: 400px;
+}
+
+body {
+    max-width: calc(var(--column) * 2);
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+h1 {
+    text-align: center;
+    grid-column: 1 / span 2;
+}
+
+h3 {
+    text-align: center;
+    grid-column: 1 / span 2;
+}
+
+button {
+    display: block;
+    text-align: center;
+    margin: auto;
+    grid-column: 1 / span 2;
+}
+
 .tabHeading {
-    font-size: large;
     color: black;
     text-decoration: underline;
 }
 
+#folderURLs {
+    display: grid;
+    grid-template-columns: var(--column) var(--column);
+    grid-template-rows: auto;
+    row-gap: 10px;
+}
+
+#folderURLs > label {
+    font-weight: bold;
+    grid-column: 1;
+}
+
+#folderURLs > input {
+    grid-column: 2;
+}
+
 #overviewTab {
     display: grid;
-    grid-template-columns: 400px 400px;
+    grid-template-columns: var(--column) var(--column);
     grid-template-rows: auto;
-    column-gap: 10px;
+    row-gap: 10px;
 }
 
 #overviewTab > label {
@@ -35,9 +77,9 @@
 #overviewImagesDiv {
     grid-column: 1 / span 2;
     display: grid;
-    grid-template-columns: 400px 400px;
+    grid-template-columns: var(--column) var(--column);
     grid-template-rows: auto;
-    column-gap: 10px;
+    row-gap: 10px;
 }
 
 #overviewImagesDiv > label {
@@ -47,4 +89,111 @@
 
 #overviewImagesDiv > input {
     grid-column: 2;
+}
+
+.itineraryDays {
+    display: grid;
+    grid-template-columns: var(--column) var(--column);
+    row-gap: 10px;
+}
+
+.itineraryDays > label {
+    font-weight: bold;
+    grid-column: 1;
+}
+
+.itineraryDays > input {
+    grid-column: 2;
+}
+
+.itineraryDays > h2 {
+    grid-column: 1 / span 2;
+    text-align: center;
+}
+
+.itineraryDays > textarea {
+    grid-column: 2;
+}
+
+.itineraryDays > hr {
+    grid-column: 1 / span 2;
+    width: 100%;
+    border: 1px solid black;
+}
+
+#datesPricesTab {
+    display: grid;
+    grid-template-columns: var(--column) var(--column);
+    grid-template-rows: auto;
+    row-gap: 10px;
+}
+
+#datesPricesTab > label {
+    grid-column: 1;
+}
+
+#datesPricesTab > input {
+    grid-column: 2;
+}
+
+#datesPricesTab > div {
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: var(--column) var(--column);
+    grid-template-rows: auto;
+    row-gap: 10px;
+}
+
+#datesPricesTab > div > label {
+    grid-column: 1;
+}
+
+#datesPricesTab > div > input {
+    grid-column: 2;
+}
+
+#datesPricesTab > table {
+    grid-column: 1 / span 2;
+}
+
+#datesPricesTab > table > tbody > tr > th {
+    width: var(--column);
+    text-align: center;
+}
+
+#datesPricesTab > table > tbody > tr > td {
+    width: var(--column);
+}
+
+#datesPricesTab > table > tbody > tr > td > input {
+    width: 100%;
+}
+
+#holInfoTab {
+    display: grid;
+    grid-template-columns: var(--column) var(--column);
+    grid-template-rows: auto;
+    row-gap: 10px;
+}
+
+#holInfoTab > h1 {
+    grid-column: 1 / span 2;
+    text-align: center;
+}
+
+#holInfoTab > h3 {
+    grid-column: 1 / span 2;
+    text-align: center;
+}
+
+#holInfoTab > table {
+    grid-column: 1 / span 2;
+}
+
+#holInfoTab > table > tbody > tr > td > input {
+    width: 100%;
+}
+
+#holInfoTab > table > tbody > tr > td > textarea {
+    width: 100%;
 }
