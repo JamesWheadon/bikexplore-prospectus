@@ -1,0 +1,81 @@
+html {width: 100%;}
+body {background:white;font-family: Arial, Helvetica, sans-serif;width: 100%;}
+a {font-size: large;font-weight: bold;}
+h1 {text-align: center;}
+hr {border: 1px solid black;}
+.itineraryList {font-size: large;font-family: Arial, Helvetica, sans-serif;}
+.priceList {font-family: Arial, Helvetica, sans-serif;}
+p {border-right: 10px;}
+table {width: 100%; white-space: nowrap;}
+tr {width: 100%;}
+td {width: 50%;}
+.elevation {width: 96%;left: 0;}
+.image {width: 96%;right: 0;}
+.Speedometer{height: 7em;}
+.accordion {
+background-color: #eee;
+color: #444;
+cursor: pointer;
+padding: 18px;
+width: 100%;
+border: none;
+text-align: left;
+outline: none;
+font-size: 15px;
+transition: 0.4s;
+}
+.active, .accordion:hover {
+background-color: #ccc;
+}
+.accordion:after {
+content: "\002B";
+color: #777;
+font-weight: bold;
+float: right;
+margin-left: 5px;
+}
+.active:after {
+content: "\002D";
+}
+.panel {
+padding: 0 18px;
+background-color: white;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.2s ease-out;
+}
+body {font-family: Arial;}
+.map { width: 90%; }
+.tab {
+overflow: hidden;
+border: 1px solid #ccc;
+background-color: #f1f1f1;
+}
+.tab button {
+background-color: inherit;
+float: left;
+border: none;
+outline: none;
+cursor: pointer;
+padding: 14px 16px;
+transition: 0.3s;
+font-size: 17px;
+width: 25%;
+}
+.tab button:hover {
+background-color: #ddd;
+}
+.tab button.active {
+background-color: #ccc;
+}
+.tabcontent {
+display: none;
+padding: 6px 12px;
+border: 1px solid #ccc;
+border-top: none;
+}
+.centered {
+display: flex;
+justify-content: center;
+align-items: center;
+}
