@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bikexplore Prospectus</title>
-    <script src='script.js'></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="moduleStyle.css">
+    <script src='script.js'></script>
+    <script src='preview.js'></script>
+    <script src='moduleScript.js'></script>
 </head>
 <body>
     <header>
@@ -101,8 +104,21 @@
                 </table>
                 <button type="button" onclick="addTableRowHolInfo()">Add another row to table</button>
             </section>
-            <!--<input type="submit" id="submit" value="Send!">--->
+            <br>
+            <button type="button" onclick="preview()">Preview</button>
         </form>
     </main>
+    <section id="preview">
+        <div class="tab">
+            <button class="tablinks" onclick="opentab(event, 'Overview')" id="defaultOpen" type="button">Holiday Overview</button>
+            <button class="tablinks" onclick="opentab(event, 'Itinerary')" type="button">Holiday Itinerary</button>
+            <button class="tablinks" onclick="opentab(event, 'DandP')" type="button">Dates and Prices</button>
+            <button class="tablinks" onclick="opentab(event, 'Info')" type="button">Holiday Information</button>
+        </div>
+        <div id="Overview" class="tabcontent"></div>
+        <div id="Itinerary" class="tabcontent"></div>
+        <div id="DandP" class="tabcontent"></div>
+        <div id="Info" class="tabcontent"></div>
+    </section>
 </body>
 </html>

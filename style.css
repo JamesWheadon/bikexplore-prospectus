@@ -6,7 +6,7 @@
     --column: 400px;
 }
 
-body {
+main {
     max-width: calc(var(--column) * 2);
     margin: auto;
     margin-bottom: 50px;
@@ -198,4 +198,8 @@ button {
 
 #holInfoTab > table > tbody > tr > td > textarea {
     width: 100%;
+}
+
+#preview {
+    display: none;
 }
