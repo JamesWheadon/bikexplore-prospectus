@@ -2,6 +2,8 @@ function preview() {
     refreshpreview();
     overviewTab();
     itineraryTab();
+    datesPricesTab();
+    holInfoTab();
     document.getElementById('preview').style.display = "block";
 }
 
@@ -132,7 +134,7 @@ function itineraryTab() {
             if (document.getElementById(`dayMap${day}`).checked) {
                 let dayImage = document.createElement('a');
                 dayImage.setAttribute('target', '_blank');
-                dayImage.setAttribute('href', `${imageFolder}day${day}image.jpg`);
+                dayImage.setAttribute('href', `${mapFolder}day${day}map.jpg`);
                 dayImage.textContent = `Map for day ${day}`
                 dayContainer.appendChild(dayImage);
             }
@@ -145,6 +147,134 @@ function itineraryTab() {
             }
 
             document.getElementById('Itinerary').appendChild(dayContainer);
+        }
+    }
+}
+
+function datesPricesTab() {
+    let Tab = document.getElementById('DandP');
+    let tourDates = document.createElement('h2');
+    tourDates.textContent = document.getElementById('holidayDates').value;
+    Tab.appendChild(tourDates);
+
+    let cost = document.createElement('h2');
+    cost.textContent = "Cost";
+    Tab.appendChild(cost);
+
+    if (document.getElementById('landOnly').value != '') {
+        let landCost = document.createElement('p')
+        landCost.textContent = `Land only - ${document.getElementById('landOnly').value}`;
+        Tab.appendChild(landCost);
+    }
+
+    if (document.getElementById('flightInc').value != '') {
+        let flightsIncCost = document.createElement('p')
+        flightsIncCost.textContent = `Land only - ${document.getElementById('flightInc').value}`;
+        Tab.appendChild(flightsIncCost);
+    }
+
+    let paymentSched = document.createElement('h2');
+    paymentSched.textContent = "Payment Schedule";
+    Tab.appendChild(paymentSched);
+    
+    let payments = document.createElement('p');
+    payments.textContent = document.getElementById('paymentSched').value;
+    Tab.appendChild(payments);
+
+    let priceInc = document.createElement('h3');
+    priceInc.textContent = "Price includes:";
+    Tab.appendChild(priceInc);
+
+    let priceIncList = document.createElement('ul');
+    priceIncList.setAttribute('class', 'priceList');
+
+    let priceIncs = document.getElementsByClassName('priceIncludes');
+    for (let inc in priceIncs) {
+        inc++
+        if (!isNaN(inc)) {
+            let priceInc = document.createElement('li');
+            priceInc.textContent = document.getElementById(`priceInc${inc}`)
+            priceIncList.appendChild(priceInc);
+        }
+    }
+
+    Tab.appendChild(priceIncList);
+
+    let priceNotInc = document.createElement('h3');
+    priceNotInc.textContent = "Price does not include:";
+    Tab.appendChild(priceNotInc);
+
+    let priceNotIncList = document.createElement('ul');
+    priceNotIncList.setAttribute('class', 'priceList');
+
+    let priceNotIncs = document.getElementsByClassName('priceNotIncludes');
+    for (let inc in priceNotIncs) {
+        inc++
+        if (!isNaN(inc)) {
+            let priceNotInc = document.createElement('li');
+            priceNotInc.textContent = document.getElementById(`priceNotInc${inc}`)
+            priceNotIncList.appendChild(priceNotInc);
+        }
+    }
+
+    Tab.appendChild(priceNotIncList);
+
+    let cancel = document.createElement('h2');
+    cancel.textContent = "Cancellations";
+    Tab.appendChild(cancel);
+
+    let cancTable = document.createElement('table');
+    let cancTableHead = document.createElement('thead');
+    let cancTableHeadRow = document.createElement('tr');
+    let notice = document.createElement('th');
+    notice.textContent = 'Written Notice Received:';
+    cancTableHeadRow.appendChild(notice);
+    let charge = document.createElement('th');
+    charge.textContent = 'Cancellation Charge:';
+    cancTableHeadRow.appendChild(charge);
+    cancTableHead.appendChild(cancTableHeadRow);
+    cancTable.appendChild(cancTableHead);
+    let cancTableBody = document.createElement('tbody');
+    let cancTableRows = document.getElementsByClassName('cancRow');
+    for (let cancRow in cancTableRows) {
+        cancRow++;
+        if (!isNaN(cancRow)) {
+            cancTableRow = document.createElement('tr');
+            cancDate = document.createElement('td');
+            cancDate.textContent = document.getElementById(`cancDate${cancRow}`);
+            cancTableRow.appendChild(cancDate);
+            cancCharge = document.createElement('td');
+            cancCharge.textContent = document.getElementById(`cancCharge${cancRow}`);
+            cancTableRow.appendChild(cancCharge);
+            cancTableBody.appendChild(cancTableRow)
+        }
+    }
+
+    let booking = document.createElement('h2');
+    booking.textContent = "How to make a booking:";
+    Tab.appendChild(cost);
+
+    let bookingHow = document.createElement('p');
+    bookingHow.textContent = document.getElementById('makeBooking').value;
+    Tab.appendChild(bookingHow);
+}
+
+function holInfoTab() {
+    let Tab = document.getElementById('Info');
+    let holInfoTopics = document.getElementsByClassName('holInfoRow');
+    for (let row of holInfoTopics) {
+        if (!isNaN(row)) {
+            let accordButton = document.createElement('button');
+            accordButton.setAttribute('class', 'accordion');
+            accordButton.setAttribute('type', 'button');
+            accordButton.textContent = document.getElementById(`holInfoTitle${row}`).value;
+            Tab.appendChild(accordButton);
+            let panel = document.createElement('div');
+            panel.setAttribute('class', 'panel');
+            let panelContent = document.createElement('p');
+            panelContent.textContent = document.getElementById(`holInfoContent${row}`).value;
+            panel.appendChild(panelContent);
+            Tab.appendChild(panel);
         }
     }
 }

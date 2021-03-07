@@ -131,14 +131,14 @@ function addTableRow() {
     let data2 = document.createElement('td');
 
     let dateInput = document.createElement('input');
-    dateInput.setAttribute('name', `cancDate${numRows}`);
-    dateInput.setAttribute('id', `cancDate${numRows}`);
+    dateInput.setAttribute('name', `cancDate${numRows + 1}`);
+    dateInput.setAttribute('id', `cancDate${numRows + 1}`);
     dateInput.setAttribute('type', `text`);
     dateInput.setAttribute('placeholder', `When must notice be recieved by`);
 
     let chargeInput = document.createElement('input');
-    chargeInput.setAttribute('name', `cancCharge${numRows}`);
-    chargeInput.setAttribute('id', `cancCharge${numRows}`);
+    chargeInput.setAttribute('name', `cancCharge${numRows + 1}`);
+    chargeInput.setAttribute('id', `cancCharge${numRows + 1}`);
     chargeInput.setAttribute('type', `text`);
     chargeInput.setAttribute('placeholder', `What is the cancellation charge`);
 
@@ -166,8 +166,8 @@ function addTableRowHolInfo() {
     titleInput.setAttribute('placeholder', `Title of information panel`);
 
     let contentInput = document.createElement('textarea');
-    contentInput.setAttribute('name', `holInforContent${numRows}`);
-    contentInput.setAttribute('id', `holInforContent${numRows}`);
+    contentInput.setAttribute('name', `holInfoContent${numRows}`);
+    contentInput.setAttribute('id', `holInfoContent${numRows}`);
     contentInput.setAttribute('type', `text`);
     contentInput.setAttribute('placeholder', `Content of holiday information panel`);
 
