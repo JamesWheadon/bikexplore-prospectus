@@ -1,7 +1,16 @@
 function preview() {
+    refreshpreview();
     overviewTab();
     itineraryTab();
     document.getElementById('preview').style.display = "block";
+}
+
+function refreshpreview() {
+    let tabs = ['Overview', 'Itinerary', 'DandP', 'Info'];
+    for (tab of tabs) {
+        let tabDiv = document.getElementById(tab);
+        tabDiv.innerHTML = "";
+    }
 }
 
 function overviewTab() {
@@ -75,9 +84,6 @@ function itineraryTab() {
     for (let day in itineraryDays) {
         day++
         if (!isNaN(day)) {
-            console.log(itineraryDays[day - 1])
-            console.log(document.getElementById(`itineraryDay${day}`))
-            console.log(itineraryDay1)
             let dayContainer = document.createElement('div');
 
             let dayTitle = document.createElement('h3');
