@@ -3,7 +3,7 @@ body {background:white;font-family: Arial, Helvetica, sans-serif;width: 100%;}
 a {font-size: large;font-weight: bold;}
 h1 {text-align: center;}
 hr {border: 1px solid black;}
-.itinerarylist {font-size: large;font-family: Arial, Helvetica, sans-serif;}
+.itineraryList {font-size: large;font-family: Arial, Helvetica, sans-serif;}
 .pricelist {font-family: Arial, Helvetica, sans-serif;}
 p {border-right: 10px;}
 table {width: 100%; white-space: nowrap;}

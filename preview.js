@@ -68,14 +68,77 @@ function overviewTab() {
 }
 
 function itineraryTab() {
+    let imageFolder = document.getElementById('imageFolder').value;
+    let mapFolder = document.getElementById('mapFolder').value;
+    let profileFolder = document.getElementById('profileFolder').value;
     let itineraryDays = document.getElementsByClassName('itineraryDays');
     for (let day in itineraryDays) {
-        let dayContainer = document.createElement('div');
+        day++
+        if (!isNaN(day)) {
+            console.log(itineraryDays[day - 1])
+            console.log(document.getElementById(`itineraryDay${day}`))
+            console.log(itineraryDay1)
+            let dayContainer = document.createElement('div');
 
-        let dayTitle = document.createElement('h3');
-        dayTitle.textContent = document.getElementById(`itineraryDay${day}`).value;
-        dayContainer.appendChild(dayTitle);
+            let dayTitle = document.createElement('h3');
+            dayTitle.textContent = document.getElementById(`itineraryDay${day}`).value;
+            dayContainer.appendChild(dayTitle);
 
-        document.getElementById('Itinerary').appendChild(dayContainer);
+            let dayHighlight = document.createElement('h4');
+            if (document.getElementById(`dayHighlight${day}`).value) {
+                dayHighlight.textContent = document.getElementById(`dayHighlight${day}`).value;
+                dayContainer.appendChild(dayHighlight);
+            }
+
+            let daySummary = document.createElement('p');
+            daySummary.textContent = document.getElementById(`daySummary${day}`).value;
+            dayContainer.appendChild(daySummary);
+
+            let dayList = document.createElement('ul');
+            dayList.setAttribute('class', 'itineraryList');
+
+            if (document.getElementById(`dayCycling${day}`).checked) {
+                let dayDistance = document.createElement('li');
+                dayDistance.textContent = `Cycling Distance: ${document.getElementById(`dayDistance${day}`).value}`;
+                dayList.appendChild(dayDistance);
+                
+                let dayClimb = document.createElement('li');
+                dayClimb.textContent = `Altitude Gain: ${document.getElementById(`dayClimb${day}`).value}`;
+                dayList.appendChild(dayClimb);
+            }
+            let dayAccom = document.createElement('li');
+            dayAccom.textContent = `Accommodation: ${document.getElementById(`dayAccom${day}`).value}`;
+            dayList.appendChild(dayAccom);
+            
+            let dayMeals = document.createElement('li');
+            dayMeals.textContent = `Meals Provided: ${document.getElementById(`dayMeals${day}`).value}`;
+            dayList.appendChild(dayMeals);
+
+            dayContainer.appendChild(dayList);
+            
+            if (document.getElementById(`dayImage${day}`).checked) {
+                let dayImage = document.createElement('img');
+                dayImage.setAttribute('class', 'image');
+                dayImage.setAttribute('src', `${imageFolder}day${day}image.jpg`);
+                dayContainer.appendChild(dayImage);
+            }
+            
+            if (document.getElementById(`dayMap${day}`).checked) {
+                let dayImage = document.createElement('a');
+                dayImage.setAttribute('target', '_blank');
+                dayImage.setAttribute('href', `${imageFolder}day${day}image.jpg`);
+                dayImage.textContent = `Map for day ${day}`
+                dayContainer.appendChild(dayImage);
+            }
+            
+            if (document.getElementById(`dayProfile${day}`).checked) {
+                let dayImage = document.createElement('img');
+                dayImage.setAttribute('class', 'elevation');
+                dayImage.setAttribute('src', `${profileFolder}day${day}elevation.jpg`);
+                dayContainer.appendChild(dayImage);
+            }
+
+            document.getElementById('Itinerary').appendChild(dayContainer);
+        }
     }
 }
