@@ -12,17 +12,24 @@
 </head>
 <body>
     <header>
-        <h1>Bikexplore Prospectus Generator</h1>
+        <h1>Bikexplore Prospectus Generator <span onclick="openModalTitle()">&#x1F6C8</span></h1>
     </header>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <div id="modalText">
+          </div>
+        </div>
+    </div>
     <main>
         <form id="my-form">
             <section id="folderURLs">
                 <label for="imageFolder">Image folder URL</label>
-                <input name="imageFolder" id="imageFolder" placeholder="URL for the image folder"/>
+                <input name="imageFolder" id="imageFolder" placeholder="URL for the image folder" class="optional"/>
                 <label for="mapFolder">Booking form</label>
-                <input name="mapFolder" id="mapFolder" placeholder="URL for the map folder"/>
+                <input name="mapFolder" id="mapFolder" placeholder="URL for the map folder" class="optional"/>
                 <label for="profileFolder">Booking form</label>
-                <input name="profileFolder" id="profileFolder" placeholder="URL for the elevation profile folder"/>
+                <input name="profileFolder" id="profileFolder" placeholder="URL for the elevation profile folder" class="optional"/>
             </section>
             <section id="overviewTab">
                 <h1 class="tabHeading">Holiday Overview Tab</h1>
@@ -46,35 +53,40 @@
                     <option value="9">9</option>
                 </select>
                 <label for="holidayProspectus">Holiday prospectus</label>
-                <input name="holidayProspectus" id="holidayProspectus" placeholder="URL for the holiday prospectus"/>
+                <input name="holidayProspectus" id="holidayProspectus" placeholder="URL for the holiday prospectus" class="optional"/>
                 <label for="bookingForm">Booking form</label>
-                <input name="bookingForm" id="bookingForm" placeholder="URL for the booking form"/>
+                <input name="bookingForm" id="bookingForm" placeholder="URL for the booking form" class="optional"/>
                 <label for="bookingConditions">Booking conditions</label>
-                <input name="bookingConditions" id="bookingConditions" placeholder="URL for the booking conditions"/>
+                <input name="bookingConditions" id="bookingConditions" placeholder="URL for the booking conditions" class="optional"/>
                 <div id="overviewImagesDiv"></div>
                 <button type="button" onclick="addOverviewImage()">Add an image to the Overview tab</button>
+                <button type="button" onclick="removeOverviewImage()">Remove the last Overview image</button>
             </section>
             <section id="itineraryTab">
                 <h1 class="tabHeading">Holiday Itinerary Tab</h1>
                 <div id="itineraryDaysDiv"></div>
                 <button type="button" onclick="addItineraryDay()">Add another day to the itinerary tab</button>
+                <br>
+                <button type="button" onclick="removeItineraryDay()">Remove the last day</button>
             </section>
             <section id="datesPricesTab">
                 <h1 class="tabHeading">Dates and Prices Tab</h1>
                 <label for="landOnly">Land only price:</label>
-                <input type="text" id="landOnly" name="landOnly" placeholder="Land only price of holiday"/>
+                <input type="text" id="landOnly" name="landOnly" placeholder="Land only price of holiday" class="optional"/>
                 <label for="flightInc">Flights included price:</label>
-                <input name="flightInc" id="flightInc" placeholder="price of the holiday, flights included"/>
+                <input name="flightInc" id="flightInc" placeholder="price of the holiday, flights included" class="optional"/>
                 <label for="paymentSched">Payment schedule:</label>
                 <input name="paymentSched" id="paymentSched" placeholder="Payment schedule for the holiday"/>
                 <div id="priceIncDiv">
                     <h3>Price includes</h3>
                 </div>
                 <button type="button" onclick="addPriceInc()">Add another field to price includes</button>
+                <button type="button" onclick="removePriceInc()">Remove the last item on the 'Price includes' list</button>
                 <div id="priceNotIncDiv">
-                    <h3>Price doesn't include</h3>
+                    <h3>Price does not include</h3>
                 </div>
                 <button type="button" onclick="addPriceNotInc()">Add another field to price doesn't include</button>
+                <button type="button" onclick="removePriceNotInc()">Remove the last item on the 'Price does not include' list</button>
                 <table id="cancCharges">
                     <thead>
                         <tr>
@@ -86,6 +98,7 @@
                     </tbody>
                 </table>
                 <button type="button" onclick="addTableRow()">Add another row to table</button>
+                <button type="button" onclick="removeTableRow()">Remove the last row of the table</button>
                 <label for="makeBooking">Make a booking:</label>
                 <input name="makeBooking" id="makeBooking" placeholder="How do people make a booking"/>
             </section>
@@ -103,6 +116,7 @@
                     </tbody>
                 </table>
                 <button type="button" onclick="addTableRowHolInfo()">Add another row to table</button>
+                <button type="button" onclick="removeTableRowHolInfo()">Remove the last row of the holiday information</button>
             </section>
             <br>
             <button type="button" onclick="preview()">Preview</button>
