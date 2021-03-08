@@ -193,7 +193,7 @@ function datesPricesTab() {
         inc++
         if (!isNaN(inc)) {
             let priceInc = document.createElement('li');
-            priceInc.textContent = document.getElementById(`priceInc${inc}`)
+            priceInc.textContent = document.getElementById(`priceInc${inc}`).value;
             priceIncList.appendChild(priceInc);
         }
     }
@@ -212,7 +212,7 @@ function datesPricesTab() {
         inc++
         if (!isNaN(inc)) {
             let priceNotInc = document.createElement('li');
-            priceNotInc.textContent = document.getElementById(`priceNotInc${inc}`)
+            priceNotInc.textContent = document.getElementById(`priceNotInc${inc}`).value;
             priceNotIncList.appendChild(priceNotInc);
         }
     }
@@ -241,10 +241,10 @@ function datesPricesTab() {
         if (!isNaN(cancRow)) {
             cancTableRow = document.createElement('tr');
             cancDate = document.createElement('td');
-            cancDate.textContent = document.getElementById(`cancDate${cancRow}`);
+            cancDate.textContent = document.getElementById(`cancDate${cancRow}`).value;
             cancTableRow.appendChild(cancDate);
             cancCharge = document.createElement('td');
-            cancCharge.textContent = document.getElementById(`cancCharge${cancRow}`);
+            cancCharge.textContent = document.getElementById(`cancCharge${cancRow}`).value;
             cancTableRow.appendChild(cancCharge);
             cancTableBody.appendChild(cancTableRow)
         }

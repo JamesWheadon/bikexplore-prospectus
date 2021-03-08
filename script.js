@@ -3,17 +3,27 @@ function addOverviewImage() {
     
     let imageInputLabel = document.createElement('label');
     imageInputLabel.setAttribute('for', `overviewImage${numOverviewImages + 1}`);
+    imageInputLabel.setAttribute('id', `overviewImageLabel${numOverviewImages + 1}`);
     imageInputLabel.textContent = `URL for image for overview tab`;
 
     let imageInput = document.createElement('input');
     imageInput.setAttribute('name', `overviewImage${numOverviewImages + 1}`)
     imageInput.setAttribute('id', `overviewImage${numOverviewImages + 1}`)
-    imageInput.setAttribute('class', `OverviewImages`)
+    imageInput.setAttribute('class', `overviewImages`)
     imageInput.setAttribute('type', `text`)
     imageInput.setAttribute('placeholder', `URL of an image for the overview tab`)
 
     document.getElementById('overviewImagesDiv').appendChild(imageInputLabel);
     document.getElementById('overviewImagesDiv').appendChild(imageInput);
+}
+
+function removeOverviewImage() {
+    if (confirm("Delete the last overview image?")) {
+        let numOverviewImages = document.getElementsByClassName('overviewImages').length;
+
+        document.getElementById(`overviewImage${numOverviewImages}`).remove()
+        document.getElementById(`overviewImageLabel${numOverviewImages}`).remove()
+    }
 }
 
 function addItineraryDay() {
@@ -28,22 +38,23 @@ function addItineraryDay() {
     dayNumber.textContent = `Day ${numItineraryDays + 1}`
     dayContainer.appendChild(dayNumber)
 
-    const dayFieldContent = [['itineraryDay', 'Day title:', 'Title for this day'], 
-    ['dayHighlight', 'Day highlight:', 'Highlights for this day'], 
-    ['daySummary', 'Day summary:', 'Summary for this day'], 
-    ['checkbox', 'dayCycling', 'Is there is a route for this day?'], 
-    ['dayAccom', 'Accommodation:', 'Accomodation for this day'], 
-    ['dayMeals', 'Meals provided:', 'Meals provided for this day'], 
-    ['dayDistance', 'Cycling distance:', 'How long is this day\'s route'], 
-    ['dayClimb', 'Altitude gain:', 'What is the altitude gain for this day\'s route'], 
-    ['checkbox', 'dayImage', 'is there an Image for this day?'], 
-    ['checkbox', 'dayMap', 'is there a Map for this day?'], 
-    ['checkbox', 'dayProfile', 'is there a Profile for this day?']];
+    const dayFieldContent = [['itineraryDay', 'Day title:', 'Title for this day', true], 
+    ['dayHighlight', 'Day highlight:', 'Highlights for this day', false], 
+    ['daySummary', 'Day summary:', 'Summary for this day', true], 
+    ['checkbox', 'dayCycling', 'Is there is a route for this day?', true], 
+    ['dayAccom', 'Accommodation:', 'Accomodation for this day', true], 
+    ['dayMeals', 'Meals provided:', 'Meals provided for this day', true], 
+    ['dayDistance', 'Cycling distance:', 'How long is this day\'s route', false], 
+    ['dayClimb', 'Altitude gain:', 'What is the altitude gain for this day\'s route', false], 
+    ['checkbox', 'dayImage', 'is there an Image for this day?', false], 
+    ['checkbox', 'dayMap', 'is there a Map for this day?', false], 
+    ['checkbox', 'dayProfile', 'is there a Profile for this day?', false]];
 
     for (const day of dayFieldContent) {
         if (day[0] === 'checkbox') {
             let inputLabel = document.createElement('label');
             inputLabel.setAttribute('for', `${day[1]}${numItineraryDays + 1}`);
+            inputLabel.setAttribute('class', 'optional')
             inputLabel.textContent = `${day[2]}`;
 
             let input = document.createElement('input');
@@ -78,6 +89,9 @@ function addItineraryDay() {
             input.setAttribute('id', `${day[0]}${numItineraryDays + 1}`);
             input.setAttribute('type', `text`);
             input.setAttribute('placeholder', day[2]);
+            if (!day[3]){
+                input.setAttribute('class', 'optional')
+            }
 
             dayContainer.appendChild(inputLabel);
             dayContainer.appendChild(input);
@@ -86,11 +100,19 @@ function addItineraryDay() {
     dayContainer.appendChild(document.createElement('hr'));
 }
 
+function removeItineraryDay() {
+    if (confirm("Delete the itinerary day?")) {
+        let days = document.getElementsByClassName('itineraryDays');
+        days[days.length - 1].remove();
+    }
+}
+
 function addPriceInc() {
     let numpriceInc = document.getElementsByClassName('priceIncludes').length;
     
     let priceIncLabel = document.createElement('label');
     priceIncLabel.setAttribute('for', `priceInc${numpriceInc + 1}`);
+    priceIncLabel.setAttribute('id', `priceIncLabel${numpriceInc + 1}`)
     priceIncLabel.textContent = `Price includes:`;
 
     let priceInc = document.createElement('input');
@@ -104,11 +126,21 @@ function addPriceInc() {
     document.getElementById('priceIncDiv').appendChild(priceInc);
 }
 
+function removePriceInc() {
+    if (confirm("Delete the item on the list?")) {
+        let numpriceIncs = document.getElementsByClassName('priceIncludes').length;
+
+        document.getElementById(`priceInc${numpriceIncs}`).remove()
+        document.getElementById(`priceIncLabel${numpriceIncs}`).remove()
+    }
+}
+
 function addPriceNotInc() {
     let numpriceNotInc = document.getElementsByClassName('priceNotIncludes').length;
     
     let priceNotIncLabel = document.createElement('label');
     priceNotIncLabel.setAttribute('for', `priceNotInc${numpriceNotInc + 1}`);
+    priceIncLabel.setAttribute('id', `priceIncNotLabel${numpriceNotInc + 1}`)
     priceNotIncLabel.textContent = `Price includes:`;
 
     let priceNotInc = document.createElement('input');
@@ -120,6 +152,15 @@ function addPriceNotInc() {
 
     document.getElementById('priceNotIncDiv').appendChild(priceNotIncLabel);
     document.getElementById('priceNotIncDiv').appendChild(priceNotInc);
+}
+
+function removePriceNotInc() {
+    if (confirm("Delete the last item on the list?")) {
+        let numpriceNotIncs = document.getElementsByClassName('priceNotIncludes').length;
+
+        document.getElementById(`priceNotInc${numpriceNotIncs}`).remove()
+        document.getElementById(`priceNotIncLabel${numpriceNotIncs}`).remove()
+    }
 }
 
 function addTableRow() {
@@ -151,6 +192,13 @@ function addTableRow() {
     tableBody.appendChild(newRow);
 }
 
+function removeTableRow() {
+    if (confirm('Delete the last table row?')) {
+        let rows = document.getElementsByClassName('cancRow');
+        rows[rows.length - 1].remove();
+    }
+}
+
 function addTableRowHolInfo() {
     let numRows = document.getElementsByClassName('holInfoRow').length;
     let tableBody = document.getElementById("holInfoBody");
@@ -178,4 +226,31 @@ function addTableRowHolInfo() {
     newRow.appendChild(data2)
 
     tableBody.appendChild(newRow);
+}
+
+function removeTableRowHolInfo() {
+    if (confirm('Delete the last table row for holiday information?')) {
+        let rows = document.getElementsByClassName('holInfoRow');
+        rows[rows.length - 1].remove();
+    }
+}
+
+// Get the modal
+let modal = document.getElementById("myModal");
+
+// When the user clicks on the button, open the modal
+function openModal() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+function closeModal() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
