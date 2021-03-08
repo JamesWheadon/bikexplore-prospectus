@@ -235,22 +235,37 @@ function removeTableRowHolInfo() {
     }
 }
 
-// Get the modal
-let modal = document.getElementById("myModal");
+function openModalTitle() {
+    let modalContent = document.getElementById('modalText');
+    let p1 = document.createElement('p');
+    let p2 = document.createElement('p');
+    let p3 = document.createElement('p');
+    p1.textContent = "Welcome to the prospectus maker for Bikexplore tour leaders. Filling in this form will allow you to generate a prospectus to display to potential customers. Go through the form, filling in the information fields below. Any field with a red background is an essential field and must be filled in, the other fields in green are optional and can be left blank.";
+    p2.textContent = "Once you have filled in the form, hit preview to view what your tour prospectus will look like on the Bikexplore website. When you are happy with your prospectus, save the page and email the saved file to Neil.";
+    p3.textContent = "Below, you can see 3 optional fields asking for URLs of folders for any images, maps and elevation profiles you would like to use for the itinerary tab. If you choose to use images for your itinerary, make sure that they are saved in the required form eg day4image.jpg";
+    modalContent.appendChild(p1);
+    modalContent.appendChild(p2);
+    modalContent.appendChild(p3);
+    openModal();
+}
 
-// When the user clicks on the button, open the modal
 function openModal() {
-  modal.style.display = "block";
+    let modal = document.getElementById("myModal");
+    modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
 function closeModal() {
-  modal.style.display = "none";
+    let modal = document.getElementById("myModal");
+    modal.style.display = "none";
+    let modalContent = document.getElementById('modalText');
+    modalContent.innerHTML = "";
 }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+    let modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+        let modalContent = document.getElementById('modalText');
+        modalContent.innerHTML = "";
+    }
 }
