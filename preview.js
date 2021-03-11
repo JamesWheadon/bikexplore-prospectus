@@ -241,10 +241,10 @@ function datesPricesTab() {
         if (!isNaN(cancRow)) {
             cancTableRow = document.createElement('tr');
             cancDate = document.createElement('td');
-            cancDate.textContent = document.getElementById(`cancDate${cancRow}`).value;
+            cancDate.textContent = document.getElementById(`cancDate${cancRow + 1}`).value;
             cancTableRow.appendChild(cancDate);
             cancCharge = document.createElement('td');
-            cancCharge.textContent = document.getElementById(`cancCharge${cancRow}`).value;
+            cancCharge.textContent = document.getElementById(`cancCharge${cancRow + 1}`).value;
             cancTableRow.appendChild(cancCharge);
             cancTableBody.appendChild(cancTableRow)
         }
