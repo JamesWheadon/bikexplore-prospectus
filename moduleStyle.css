@@ -11,7 +11,7 @@ tr {width: 100%;}
 td {width: 50%;}
 .elevation {width: 96%;left: 0;}
 .image {width: 96%;right: 0;}
-.Speedometer{height: 7em;}
+.Speedometer{height: 7em; grid-column: 2; grid-row: 1 / span 3;}
 .accordion {
 background-color: #eee;
 color: #444;
@@ -78,4 +78,15 @@ border-top: none;
 display: flex;
 justify-content: center;
 align-items: center;
+}
+#overviewStatsRating {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+#overviewStatsRating > h4 {
+    text-align: center;
+    grid-column: 1;
 }
