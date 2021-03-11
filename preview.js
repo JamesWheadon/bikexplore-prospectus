@@ -241,14 +241,17 @@ function datesPricesTab() {
         if (!isNaN(cancRow)) {
             cancTableRow = document.createElement('tr');
             cancDate = document.createElement('td');
-            cancDate.textContent = document.getElementById(`cancDate${cancRow + 1}`).value;
+            console.log(cancRow)
+            cancDate.textContent = document.getElementById(`cancDate${cancRow}`).value;
             cancTableRow.appendChild(cancDate);
             cancCharge = document.createElement('td');
-            cancCharge.textContent = document.getElementById(`cancCharge${cancRow + 1}`).value;
+            cancCharge.textContent = document.getElementById(`cancCharge${cancRow}`).value;
             cancTableRow.appendChild(cancCharge);
             cancTableBody.appendChild(cancTableRow)
         }
     }
+    cancTable.appendChild(cancTableBody);
+    Tab.appendChild(cancTable);
 
     let booking = document.createElement('h2');
     booking.textContent = "How to make a booking:";
