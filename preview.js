@@ -32,12 +32,45 @@ function overviewTab() {
     tourSummary.textContent = document.getElementById('holidaySummary').value;
     document.getElementById('Overview').appendChild(tourSummary);
 
+    let overviewInfo = document.createElement('div');
+    overviewInfo.setAttribute('id', 'overviewStatsRating');
+
+    let cyclingDays = 0;
+    let totalDistance = 0;
+    let totalClimbing = 0;
+    let itineraryDays = document.getElementsByClassName('itineraryDays');
+
+    for (let day in itineraryDays) {
+        day++
+        if (!isNaN(day)) {
+            if (document.getElementById(`dayCycling${day}`).checked) {
+                cyclingDays++;
+                totalDistance = totalDistance + parseFloat(document.getElementById(`dayDistance${day}`).value.replace(/\D/g, ""));
+                totalClimbing = totalClimbing + parseFloat(document.getElementById(`dayClimb${day}`).value.replace(/\D/g, ""));
+            }
+        }
+    }
+    
+    let daysCycling = document.createElement('h4');
+    daysCycling.textContent = `Number of days cycling: ${cyclingDays}`;
+    overviewInfo.appendChild(daysCycling);
+
+    let averageDistance = document.createElement('h4');
+    averageDistance.textContent = `Average daily distance: ${totalDistance / cyclingDays}`;
+    overviewInfo.appendChild(averageDistance);
+
+    let averageClimbing = document.createElement('h4');
+    averageClimbing.textContent = `Average daily ascent: ${totalClimbing / cyclingDays}`;
+    overviewInfo.appendChild(averageClimbing);
+
     let tourRatingValue = document.getElementById('rating').value;
     let tourRating = document.createElement('img');
     tourRating.setAttribute('class', 'Speedometer');
     tourRating.setAttribute('src', `https://www.bikexplore.co.uk/Portals/0/EasyGalleryImages/110/867/Speedo${tourRatingValue}.jpg`)
     tourRating.textContent = tourRatingValue;
-    document.getElementById('Overview').appendChild(tourRating);
+    overviewInfo.appendChild(tourRating);
+
+    document.getElementById('Overview').appendChild(overviewInfo);
 
     let overviewImages = document.getElementsByClassName('OverviewImages');
     for (let image of overviewImages) {
@@ -147,6 +180,9 @@ function itineraryTab() {
             }
 
             document.getElementById('Itinerary').appendChild(dayContainer);
+            if (day < itineraryDays.length) {
+                document.getElementById('Itinerary').appendChild(document.createElement('hr'))
+            }
         }
     }
 }
@@ -241,7 +277,6 @@ function datesPricesTab() {
         if (!isNaN(cancRow)) {
             cancTableRow = document.createElement('tr');
             cancDate = document.createElement('td');
-            console.log(cancRow)
             cancDate.textContent = document.getElementById(`cancDate${cancRow}`).value;
             cancTableRow.appendChild(cancDate);
             cancCharge = document.createElement('td');
